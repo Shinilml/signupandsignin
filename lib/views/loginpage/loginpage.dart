@@ -14,6 +14,7 @@ class _LoginpageState extends State<Loginpage> {
   final _formKey = GlobalKey<FormState>();
   TextEditingController password2controller = TextEditingController();
   TextEditingController email2controller = TextEditingController();
+  bool rememberme = false;
 
   @override
   Widget build(BuildContext context) {
@@ -27,14 +28,14 @@ class _LoginpageState extends State<Loginpage> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 SizedBox(
-                  height: 50,
+                  height: 48,
                 ),
                 Text(
                   "Sign in to Your Account",
                   style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                 ),
                 SizedBox(
-                  height: 40,
+                  height: 38,
                 ),
                 TextFormField(
                   controller: email2controller,
@@ -60,7 +61,7 @@ class _LoginpageState extends State<Loginpage> {
                   ),
                 ),
                 SizedBox(
-                  height: 40,
+                  height: 38,
                 ),
                 TextFormField(
                   controller: password2controller,
@@ -85,8 +86,19 @@ class _LoginpageState extends State<Loginpage> {
                               color: const Color.fromARGB(86, 158, 158, 158))),
                       suffixIcon: Icon(Icons.visibility_off)),
                 ),
-                SizedBox(
-                  height: 30,
+                Row(
+                  children: [
+                    Checkbox(
+                        value: rememberme,
+                        onChanged: (value) {
+                          setState(() {
+                            rememberme = value!;
+                          });
+                        }),
+                    Text("Remember Me"),
+                    Spacer(),
+                    TextButton(onPressed: () {}, child: Text("Forgot Password"))
+                  ],
                 ),
                 Container(
                   width: 500,
